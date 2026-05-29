@@ -47,10 +47,8 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
 
 - The Nauro stdio MCP server (`.mcp.json`).
 
-The `nauro-*` workflow subagents are rendered from the CLI sources and added in
-a later release. Skills (`nauro-adopt`, `nauro-ship-task`) are installed by the
-CLI, not the plugin — standalone skills are auto-discovered and keep their short
-names.
+Skills (`nauro-adopt`, `nauro-ship-task`) are installed by the CLI via
+`nauro setup`, not the plugin.
 
 ## Versioning
 

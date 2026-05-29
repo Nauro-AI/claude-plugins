@@ -7,7 +7,7 @@
     {
       "name": "nauro",
       "source": "./",
-      "description": "Decision system for AI coding agents. Bundles the Nauro stdio MCP server (the nauro-* workflow subagents arrive in a later release). Requires the nauro CLI: pipx install nauro."
+      "description": "Decision system for AI coding agents. Wires the Nauro MCP server into Claude Code. Requires the nauro CLI: pipx install nauro."
     }
   ]
 }
