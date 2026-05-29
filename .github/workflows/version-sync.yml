@@ -25,3 +25,17 @@ jobs:
             exit 1
           fi
           echo "Versions are in lockstep."
+
+  agents-match-pinned-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: committed agents/ must byte-match the pinned published nauro render
+        run: |
+          pin="$(jq -r .version .claude-plugin/plugin.json)"
+          echo "pinning nauro==$pin"
+          python -m pip install --quiet "nauro==$pin"
+          nauro render-plugin . --check
