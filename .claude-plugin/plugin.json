@@ -1,6 +1,6 @@
 {
   "name": "nauro",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Decision system for AI coding agents. Wires the Nauro stdio MCP server into Claude Code. Requires the nauro CLI (pipx install nauro).",
   "author": {
     "name": "Nauro-AI"

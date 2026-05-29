@@ -46,9 +46,15 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
 ## What it bundles
 
 - The Nauro stdio MCP server (`.mcp.json`).
+- The four `nauro-*` workflow subagents (`agents/`): `nauro-planner`,
+  `nauro-executor`, `nauro-reviewer`, `nauro-tech-lead`.
 
 Skills (`nauro-adopt`, `nauro-ship-task`) are installed by the CLI via
 `nauro setup`, not the plugin.
+
+Install the plugin **or** run `nauro setup --with-subagents`, not both: the
+bundled agents are byte-identical either way, but having both makes the active
+source ambiguous. For full control of agent configuration, use the CLI.
 
 ## Versioning
 
