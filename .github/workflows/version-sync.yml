@@ -1,0 +1,27 @@
+name: version-sync
+
+# Lockstep gate: the plugin's declared version must equal the latest published
+# nauro CLI on PyPI. A plugin that bundles/targets the CLI must never lag a
+# released CLI version, so this fails the build until plugin.json is bumped.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  plugin-version-matches-pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: plugin.json version must equal the latest published nauro on PyPI
+        run: |
+          plugin_version="$(jq -r .version .claude-plugin/plugin.json)"
+          pypi_version="$(curl -fsSL https://pypi.org/pypi/nauro/json | jq -r .info.version)"
+          echo "plugin.json version : $plugin_version"
+          echo "PyPI nauro (latest) : $pypi_version"
+          if [ "$plugin_version" != "$pypi_version" ]; then
+            echo "::error::plugin.json version ($plugin_version) does not match the latest published nauro on PyPI ($pypi_version). Bump plugin.json in lockstep with the CLI release."
+            exit 1
+          fi
+          echo "Versions are in lockstep."

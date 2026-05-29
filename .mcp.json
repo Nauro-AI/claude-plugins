@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nauro": {
+      "command": "nauro",
+      "args": ["serve", "--stdio"]
+    }
+  }
+}
