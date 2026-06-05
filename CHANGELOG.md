@@ -8,7 +8,16 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [0.12.1]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 0.12.1 to clear the `version-sync` lockstep
+  gate (the plugin had drifted a release behind the published CLI). The bundled
+  `nauro-*` agents are byte-identical to the 0.12.1 render, so no agent change
+  was needed — only the version pin.
+- CI (`version-sync`) now also runs `claude plugin validate . --strict`, gating
+  the same check the community-directory review pipeline runs.
 
 ### Added
 
@@ -21,11 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   letting the MCP server fail silently with `spawn nauro ENOENT`.
 - `.gitignore` to keep local dev artifacts out of the install cache (the
   marketplace entry uses `source: "./"`, which ships the whole repo root).
-
-### Changed
-
-- CI (`version-sync`) now also runs `claude plugin validate . --strict`, gating
-  the same check the community-directory review pipeline runs.
 
 ## [0.11.1]
 
