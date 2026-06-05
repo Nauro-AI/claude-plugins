@@ -39,3 +39,20 @@ jobs:
           echo "pinning nauro==$pin"
           python -m pip install --quiet "nauro==$pin"
           nauro render-plugin . --check
+
+  manifests-validate-strict:
+    # Gate on the SAME validation the community-directory review pipeline runs,
+    # so a structural/schema mistake fails here instead of at submission time.
+    # --strict also fails on warnings (e.g. a missing marketplace description).
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate plugin + marketplace manifests (strict)
+        run: claude plugin validate . --strict

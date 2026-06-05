@@ -6,5 +6,6 @@
     "name": "Nauro-AI"
   },
   "homepage": "https://nauro.ai",
-  "repository": "https://github.com/Nauro-AI/claude-plugins"
+  "repository": "https://github.com/Nauro-AI/claude-plugins",
+  "license": "Apache-2.0"
 }

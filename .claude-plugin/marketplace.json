@@ -1,5 +1,6 @@
 {
   "name": "nauro-ai",
+  "description": "Official marketplace for Nauro, the decision system for AI coding agents. Distributes the Nauro plugin (MCP server + workflow subagents) for Claude Code.",
   "owner": {
     "name": "Nauro-AI"
   },

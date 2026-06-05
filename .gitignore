@@ -1,0 +1,9 @@
+# The marketplace entry uses source "./", so the entire repo root is copied
+# into every user's ~/.claude/plugins cache on install. Keep local dev
+# artifacts out of the tree so they never ship to users.
+.claude/settings.local.json
+.playwright-mcp/
+
+# OS / editor noise
+.DS_Store
+*.swp

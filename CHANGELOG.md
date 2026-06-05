@@ -1,0 +1,44 @@
+# Changelog
+
+All notable changes to the Nauro Claude Code plugin distribution are documented
+here. This tracks the **plugin packaging**, not the `nauro` CLI itself — see the
+CLI's own release notes for runtime changes. The plugin's `version` in
+`plugin.json` is pinned in lockstep to the published `nauro` CLI on PyPI (CI
+gate: `version-sync`), so version numbers here mirror CLI releases.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+### Added
+
+- Apache-2.0 `LICENSE` and a `license` field in `plugin.json`.
+- Top-level `description` in `marketplace.json` (clears the strict-validator
+  warning ahead of any directory submission).
+- `SessionStart` preflight hook (`hooks/hooks.json` +
+  `scripts/preflight-nauro.sh`): when the external `nauro` CLI is missing from
+  PATH, it surfaces an actionable "run `pipx install nauro`" message instead of
+  letting the MCP server fail silently with `spawn nauro ENOENT`.
+- `.gitignore` to keep local dev artifacts out of the install cache (the
+  marketplace entry uses `source: "./"`, which ships the whole repo root).
+
+### Changed
+
+- CI (`version-sync`) now also runs `claude plugin validate . --strict`, gating
+  the same check the community-directory review pipeline runs.
+
+## [0.11.1]
+
+### Added
+
+- The four `nauro-*` workflow subagents (`nauro-planner`, `nauro-executor`,
+  `nauro-reviewer`, `nauro-tech-lead`), rendered from the canonical CLI sources
+  and CI-verified byte-identical to the pinned published `nauro` render.
+
+## [0.11.0]
+
+### Added
+
+- Initial plugin scaffold: `marketplace.json`, `plugin.json`, a static stdio
+  `.mcp.json` wiring `nauro serve --stdio`, and the `version-sync` lockstep gate
+  against the published `nauro` CLI on PyPI.
