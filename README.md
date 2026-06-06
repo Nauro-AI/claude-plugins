@@ -56,8 +56,32 @@ Install the plugin **or** run `nauro setup --with-subagents`, not both: the
 bundled agents are byte-identical either way, but having both makes the active
 source ambiguous. For full control of agent configuration, use the CLI.
 
+## Example prompts
+
+Once installed, the bundled subagents and MCP server work from natural prompts:
+
+- "Use @nauro-planner to plan adding rate limiting to our API." — the planner
+  classifies doctrine risk and checks recorded decisions before proposing.
+- "Have @nauro-reviewer review this diff against our recorded decisions." — it
+  flags conflicts with established doctrine, not just code issues.
+- "Before we adopt DynamoDB, check our decision log for anything that conflicts."
+  — runs `check_decision` so the agent sees prior context before it acts.
+
 ## Versioning
 
 `plugin.json`'s `version` tracks the published `nauro` CLI version one-to-one.
 CI (`version-sync`) fails if they drift, so an installed plugin never lags a
 released CLI.
+
+## Privacy & data
+
+Nauro is local-first: your project context lives as Markdown in `~/.nauro/`, and
+your source code never leaves your machine. This plugin's MCP server runs locally
+(`nauro serve --stdio`) and works fully offline with no account. The `nauro` CLI
+sends anonymous usage telemetry, which you can disable with `NAURO_TELEMETRY=0`
+(or `nauro telemetry disable`). Optional hosted sync (separate and opt-in) stores
+agent-authored project context — decisions, state, questions, snapshots — plus
+your account email and an opaque account id; never your source code, file paths,
+repository names, or conversation content.
+
+Full privacy policy: https://nauro.ai/privacy

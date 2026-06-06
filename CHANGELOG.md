@@ -30,6 +30,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   letting the MCP server fail silently with `spawn nauro ENOENT`.
 - `.gitignore` to keep local dev artifacts out of the install cache (the
   marketplace entry uses `source: "./"`, which ships the whole repo root).
+- README "Privacy & data" section linking the privacy policy
+  (https://nauro.ai/privacy) and an "Example prompts" section — pre-submission
+  requirements for the community directory (Software Directory Policy 3.A / 3.E).
 
 ## [0.11.1]
 
