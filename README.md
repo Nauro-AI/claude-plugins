@@ -15,11 +15,12 @@ The plugin declares the Nauro MCP server (`nauro serve --stdio`), which runs the
 `nauro` binary. Install it first:
 
 ```
-pipx install nauro
+uv tool install nauro
 ```
 
-If `nauro` is not on your PATH when you enable the plugin, the MCP server will
-fail to connect until the binary is installed and the session is restarted.
+(or `pipx install nauro` if you already have Python 3.10+). If `nauro` is not on
+your PATH when you enable the plugin, the MCP server will fail to connect until
+the binary is installed and the session is restarted.
 
 ## Install (pilot)
 
@@ -49,7 +50,7 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
 - The four `nauro-*` workflow subagents (`agents/`): `nauro-planner`,
   `nauro-executor`, `nauro-reviewer`, `nauro-tech-lead`.
 - A SessionStart preflight hook (`hooks/hooks.json` → `scripts/preflight-nauro.sh`)
-  that, when the `nauro` CLI is missing from PATH, surfaces a `pipx install nauro`
+  that, when the `nauro` CLI is missing from PATH, surfaces a `uv tool install nauro`
   message so the stdio MCP server's first-run `spawn nauro ENOENT` isn't silent.
 
 Skills are installed by the CLI, not the plugin: `nauro-adopt` (always) plus the

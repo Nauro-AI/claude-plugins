@@ -8,6 +8,19 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.12.4]
+
+### Changed
+
+- Install guidance now leads with `uv tool install nauro` (pipx/pip kept as a
+  fallback) across the `marketplace.json` / `plugin.json` descriptions, the
+  README prerequisite, and the `SessionStart` preflight hook's missing-binary
+  message. `uv tool install` provisions its own Python, so the prerequisite no
+  longer assumes a working Python 3.10+ already on the user's PATH.
+- Pinned `plugin.json` to `nauro` 0.12.4 to clear the `version-sync` lockstep
+  gate (the plugin had drifted behind the published CLI). The bundled `nauro-*`
+  agents byte-match the 0.12.4 render, so no agent change was needed.
+
 ## [0.12.1]
 
 ### Changed
