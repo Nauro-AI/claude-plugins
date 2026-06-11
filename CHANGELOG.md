@@ -10,6 +10,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [0.12.7]
 
+### Added
+
+- The advisory UserPromptSubmit hook (`nauro hook user-prompt-submit`) is now
+  bundled by default via a guard wrapper (`scripts/prompt-hook-nauro.sh`):
+  decisions related to each prompt surface as non-blocking context, with no
+  agent invocation required. The wrapper exits silently when the `nauro`
+  binary is missing; the hook itself injects nothing when the repo has no
+  Nauro project or when nothing clears the relevance floor. On the CLI this
+  hook remains opt-in (`nauro setup --with-hooks`); installing both duplicates
+  the surfaced context, so use one or the other.
+- The SessionStart preflight now also covers the second silent first-run gap:
+  when the `nauro` CLI is present but the session's repo has no Nauro project,
+  it suggests `nauro adopt` (previously it only handled the missing-binary
+  case).
+
 ### Changed
 
 - Pinned `plugin.json` to `nauro` 0.12.7 in lockstep with the CLI release. The
