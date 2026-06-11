@@ -8,6 +8,21 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.13.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 0.13.0 in lockstep with the CLI release.
+- The bundled `nauro-*` agents now declare `model: inherit` instead of pinning
+  Opus, so they run on the parent session's model (rendered from the 0.13.0
+  CLI sources; `nauro render-plugin . --check` passes).
+- Installs updating from a pre-hook 0.12.7 install also pick up the advisory
+  UserPromptSubmit hook and the preflight `nauro adopt` nudge listed under
+  0.12.7 below, which landed in the repo after that version's first installs.
+- README and manifest descriptions now say the plugin covers Claude Code and
+  Cowork: the desktop app installs the same marketplace artifact and runs the
+  bundled agents and hooks in Cowork.
+
 ## [0.12.7]
 
 ### Added

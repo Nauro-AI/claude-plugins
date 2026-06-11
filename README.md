@@ -2,12 +2,13 @@
 
 The Claude Code plugin distribution for [Nauro](https://nauro.ai), the decision
 system for AI coding agents. This plugin is an **additive front door for the
-Claude Code surface**: it wires Nauro's MCP server into Claude Code through the
-marketplace, with version-pinned updates.
+Claude surfaces**: it wires Nauro's MCP server into Claude Code and Cowork
+(the desktop app's agent mode) through the marketplace, with version-pinned
+updates.
 
 It does not replace the CLI. `nauro setup all` remains the canonical installer
-across Claude Code, Cursor, and Codex; this plugin covers the Claude Code
-surface only.
+across Claude Code, Cursor, and Codex; this plugin covers the Claude Code and
+Cowork surfaces only.
 
 ## Prerequisite
 
