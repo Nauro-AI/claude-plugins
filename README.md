@@ -49,9 +49,15 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
 - The Nauro stdio MCP server (`.mcp.json`).
 - The four `nauro-*` workflow subagents (`agents/`): `nauro-planner`,
   `nauro-executor`, `nauro-reviewer`, `nauro-tech-lead`.
-- A SessionStart preflight hook (`hooks/hooks.json` → `scripts/preflight-nauro.sh`)
-  that, when the `nauro` CLI is missing from PATH, surfaces a `uv tool install nauro`
-  message so the stdio MCP server's first-run `spawn nauro ENOENT` isn't silent.
+- An advisory UserPromptSubmit hook (`scripts/prompt-hook-nauro.sh`) that
+  surfaces decisions related to each prompt as non-blocking context. It runs
+  locally against the project store, injects nothing when the repo has no Nauro
+  project or when nothing clears the relevance floor, and never blocks a turn.
+- A SessionStart preflight hook (`scripts/preflight-nauro.sh`) that, when the
+  `nauro` CLI is missing from PATH, surfaces a `uv tool install nauro` message
+  so the stdio MCP server's first-run `spawn nauro ENOENT` isn't silent. When
+  the CLI is present but the session's repo has no Nauro project, it suggests
+  `nauro adopt` instead.
 
 Skills are installed by the CLI, not the plugin: `nauro-adopt` (always) plus the
 opt-in `nauro-ship-task`, `nauro-handoff`, and `nauro-context` (via
@@ -59,7 +65,10 @@ opt-in `nauro-ship-task`, `nauro-handoff`, and `nauro-context` (via
 
 Install the plugin **or** run `nauro setup all --with-subagents`, not both: the
 bundled agents are byte-identical either way, but having both makes the active
-source ambiguous. For full control of agent configuration, use the CLI.
+source ambiguous. The same applies to `nauro setup --with-hooks`: the plugin
+already wires the advisory prompt hook, so adding it via setup as well surfaces
+each related decision twice. For full control of agent and hook configuration,
+use the CLI.
 
 ## Example prompts
 

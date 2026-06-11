@@ -8,11 +8,38 @@
 # non-actionable failure on first run.
 #
 # This is a SessionStart hook: its stdout is added to Claude's context, so when
-# the binary is missing Claude can surface the fix to the user proactively. It
-# prints nothing when `nauro` is present, to avoid per-session noise. The hook
-# cannot (and does not try to) install anything or block the session.
+# the binary is missing Claude can surface the fix to the user proactively. The
+# hook cannot (and does not try to) install anything or block the session.
+#
+# When the binary IS present, one more silent first-run gap remains: a git repo
+# with no Nauro project, where the MCP tools error until `nauro adopt` runs.
+# In that case the hook emits a one-line nudge for Claude to surface when
+# relevant. Everywhere else (non-git directories, adopted repos, worktrees of
+# adopted repos) it prints nothing, to avoid per-session noise.
 
 if command -v nauro >/dev/null 2>&1; then
+  repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  [ -n "$repo_root" ] || exit 0
+  [ -f "$repo_root/.nauro/config.json" ] && exit 0
+
+  registry="${NAURO_HOME:-$HOME/.nauro}/registry.json"
+  if [ -f "$registry" ]; then
+    grep -Fq "\"$repo_root\"" "$registry" && exit 0
+    # Linked worktrees register under the main worktree's path.
+    common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+    if [ -n "$common_dir" ]; then
+      main_root=$(dirname "$common_dir")
+      [ -f "$main_root/.nauro/config.json" ] && exit 0
+      grep -Fq "\"$main_root\"" "$registry" && exit 0
+    fi
+  fi
+
+  cat <<'EOF'
+[nauro plugin] The `nauro` CLI is installed but this repository has no Nauro
+project, so the Nauro MCP tools will error here. If the user wants Nauro's
+decision tracking in this repo, suggest running `nauro adopt` from the repo
+root, then restarting the session.
+EOF
   exit 0
 fi
 
