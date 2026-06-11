@@ -22,9 +22,9 @@ uv tool install nauro
 your PATH when you enable the plugin, the MCP server will fail to connect until
 the binary is installed and the session is restarted.
 
-## Install (pilot)
+## Install
 
-This marketplace is private during the pilot. Add it and install the plugin:
+Add the marketplace and install the plugin:
 
 ```
 /plugin marketplace add Nauro-AI/claude-plugins
