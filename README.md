@@ -88,6 +88,17 @@ Once installed, the bundled subagents and MCP server work from natural prompts:
 CI (`version-sync`) fails if they drift, so an installed plugin never lags a
 released CLI.
 
+If a released version is not showing up as an update, refresh the marketplace
+clone first. Claude Code caches marketplace repos locally and does not always
+re-fetch them before checking for updates:
+
+```
+/plugin marketplace update nauro-ai
+/plugin update nauro@nauro-ai
+```
+
+(or the same subcommands under `claude plugin` in a terminal).
+
 ## Privacy & data
 
 Nauro is local-first: your project context lives as Markdown in `~/.nauro/`, and
