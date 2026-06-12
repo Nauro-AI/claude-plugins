@@ -8,6 +8,18 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.13.1]
+
+### Fixed
+
+- The bundled agents now grant the plugin MCP namespace
+  (`mcp__plugin_nauro_nauro__*`) in their tools allowlists, mirroring the
+  CLI-setup namespace. Before this, on a plugin-only install the agents could
+  not reach the plugin's own MCP server: subagent allowlist mismatches drop
+  tools silently, so the planner ran its doctrine triage with no
+  `check_decision` available. Rendered from the 0.13.1 CLI sources
+  (`nauro render-plugin . --check` passes).
+
 ## [0.13.0]
 
 ### Changed
