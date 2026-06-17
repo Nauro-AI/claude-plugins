@@ -61,7 +61,7 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
   `nauro adopt` instead.
 
 Skills are installed by the CLI, not the plugin: `nauro-adopt` (always) plus the
-opt-in `nauro-ship-task`, `nauro-handoff`, and `nauro-context` (via
+opt-in `nauro-ship-task`, `nauro-context`, and `nauro-loop` (via
 `nauro adopt --with-skills`).
 
 Install the plugin **or** run `nauro setup all --with-subagents`, not both: the
