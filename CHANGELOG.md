@@ -8,6 +8,14 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.1.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.1.0 in lockstep with the CLI release. The
+  bundled `nauro-*` agents byte-match the 1.1.0 render (`nauro render-plugin .
+  --check` passes), so no agent change was needed — only the version pin.
+
 ## [0.13.1]
 
 ### Fixed
