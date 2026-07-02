@@ -8,6 +8,16 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.2.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.2.0 in lockstep with the CLI release.
+- Re-rendered the bundled `nauro-planner`, `nauro-executor`, and
+  `nauro-reviewer` agents to match the 1.2.0 render: the PR-description
+  guidance moved to the three-core-section template (Why / What changed /
+  Test plan, with Risk and Deferred as conditional headings).
+
 ## [1.1.0]
 
 ### Changed
