@@ -8,6 +8,21 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.11.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.11.0 in lockstep with the CLI release,
+  catching up from 1.2.0 across the CLI's 1.3–1.11 releases (the lockstep
+  gate only runs on push, so the lag surfaced at the next sync rather than
+  in CI).
+- Re-rendered all four bundled agents to the 1.11.0 render. The visible
+  changes land in `nauro-planner` and `nauro-tech-lead`: related-decision
+  hits now arrive with inline triage headers (decision type, confidence,
+  supersession links, and a lede), so the guidance drops the per-hit
+  header-lookup step and directs full reads only at decisions the agent
+  reasons about; the tech-lead keeps its read-everything mandate.
+
 ## [1.2.0]
 
 ### Changed
