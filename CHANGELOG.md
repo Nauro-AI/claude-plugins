@@ -8,6 +8,16 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.12.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.12.0 in lockstep with the CLI release
+  (which adds the `nauro repair` command and doctor's supersede-orphan
+  detection).
+- Re-render under 1.12.0 is byte-identical: the release changes no agent
+  guidance, so the four bundled agents are unchanged.
+
 ## [1.11.0]
 
 ### Changed
