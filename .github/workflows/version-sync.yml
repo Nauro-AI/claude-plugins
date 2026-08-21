@@ -3,11 +3,18 @@ name: version-sync
 # Lockstep gate: the plugin's declared version must equal the latest published
 # nauro CLI on PyPI. A plugin that bundles/targets the CLI must never lag a
 # released CLI version, so this fails the build until plugin.json is bumped.
+#
+# The daily schedule exists because the lag this gate guards against is caused
+# by a PyPI release in the nauro repo, which never pushes here: without it the
+# check only runs when this repo changes, exactly when it cannot go red.
 
 on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
 
 jobs:
   plugin-version-matches-pypi:
