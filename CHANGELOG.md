@@ -8,6 +8,28 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.15.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.15.0 in lockstep with the CLI, catching up
+  across the 1.14.0, 1.14.1, and 1.15.0 releases (the lockstep gate only ran on
+  push and pull_request, so releases cut in the nauro repo could not turn it
+  red here; `version-sync` now also runs on a daily schedule and on manual
+  dispatch to close that gap).
+- Re-render under 1.15.0 is byte-identical: the releases change no agent
+  guidance, so the four bundled agents are unchanged.
+- Updated the plugin and marketplace descriptions to the current positioning:
+  the decision system for building software with AI, carrying human-approved
+  project judgment.
+
+### Fixed
+
+- Removed the README claim that the CLI sends anonymous usage telemetry.
+  Product telemetry was removed from the `nauro` CLI entirely; the CLI sends
+  no telemetry, and `NAURO_TELEMETRY` / `nauro telemetry` are inert
+  compatibility shims slated for removal in 2.0.
+
 ## [1.13.0]
 
 ### Changed

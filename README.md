@@ -104,8 +104,7 @@ re-fetch them before checking for updates:
 Nauro is local-first: your project context lives as Markdown in `~/.nauro/`, and
 your source code never leaves your machine. This plugin's MCP server runs locally
 (`nauro serve --stdio`) and works fully offline with no account. The `nauro` CLI
-sends anonymous usage telemetry, which you can disable with `NAURO_TELEMETRY=0`
-(or `nauro telemetry disable`). Optional hosted sync (separate and opt-in) stores
+sends no telemetry. Optional hosted sync (separate and opt-in) stores
 agent-authored project context — decisions, state, questions, snapshots — plus
 your account email and an opaque account id; never your source code, file paths,
 repository names, or conversation content.
