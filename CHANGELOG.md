@@ -8,6 +8,25 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.0]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.20.0 in lockstep with the CLI, catching up
+  across the 1.16.0 through 1.20.0 releases.
+- Re-rendered all four bundled agents to the 1.20.0 render. The re-render is
+  not byte-identical: the subagents are now draft-only for project-truth
+  writes. `nauro-planner` and `nauro-tech-lead` drop the direct write tools
+  from their `tools:` allowlists (`propose_decision` for both, plus
+  `flag_question`, `update_state`, and `AskUserQuestion` for the tech-lead)
+  and return complete decision drafts to the parent session, which files only
+  a draft the user approved. `nauro-executor` returns unplanned architectural choices to the
+  parent instead of filing them, and now commits locally and drafts the PR
+  without pushing or opening it. `nauro-reviewer` also reviews the exact PR
+  title and adds a hard rule that the title must describe the reviewed change.
+  The tech-lead guidance is restructured into direction-setting, session
+  audit, and PR doctrine-audit modes.
+
 ## [1.15.0]
 
 ### Changed
