@@ -8,6 +8,13 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.1]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.20.1 in lockstep with the CLI auth patch.
+- The four bundled agents remain unchanged.
+
 ## [1.20.0]
 
 ### Changed
