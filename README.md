@@ -48,8 +48,9 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
 ## What it bundles
 
 - The Nauro stdio MCP server (`.mcp.json`).
-- The four `nauro-*` workflow subagents (`agents/`): `nauro-planner`,
-  `nauro-executor`, `nauro-reviewer`, `nauro-tech-lead`.
+- The five `nauro-*` subagents (`agents/`): `nauro-planner`,
+  `nauro-executor`, `nauro-reviewer`, `nauro-tech-lead`, and the read-only
+  `nauro-investigator`.
 - An advisory UserPromptSubmit hook (`scripts/prompt-hook-nauro.sh`) that
   surfaces decisions related to each prompt as non-blocking context. It runs
   locally against the project store, injects nothing when the repo has no Nauro
