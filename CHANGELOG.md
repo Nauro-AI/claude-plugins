@@ -8,6 +8,18 @@ gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.0]
+
+### Added
+
+- Added the read-only `nauro-investigator` agent, rendered from the published
+  `nauro` 1.21.0 package.
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.21.0 in lockstep with the CLI release.
+- Updated the README to list all five bundled agents.
+
 ## [1.20.1]
 
 ### Changed
