@@ -1,8 +1,8 @@
-# Nauro — Claude Code plugin
+# Nauro: Claude Code plugin
 
 The Claude Code plugin distribution for [Nauro](https://nauro.ai), the decision
-system for AI coding agents. This plugin is an **additive front door for the
-Claude surfaces**: it wires Nauro's MCP server into Claude Code and Cowork
+system for software built with AI. This plugin is an **additive front door for
+the Claude surfaces**: it wires Nauro's MCP server into Claude Code and Cowork
 (the desktop app's agent mode) through the marketplace, with version-pinned
 updates.
 
@@ -62,8 +62,8 @@ Or persist it in your settings (`~/.claude/settings.json`, or a project
   `nauro adopt` instead.
 
 Skills are installed by the CLI, not the plugin: `nauro-adopt` (always) plus the
-opt-in `nauro-ship-task`, `nauro-context`, and `nauro-loop` (via
-`nauro adopt --with-skills`).
+opt-in `nauro-ship-task`, `nauro-context`, `nauro-loop`, and `nauro-interview`
+(via `nauro adopt --with-skills`).
 
 Install the plugin **or** run `nauro setup all --with-subagents`, not both: the
 bundled agents are byte-identical either way, but having both makes the active
@@ -76,18 +76,18 @@ use the CLI.
 
 Once installed, the bundled subagents and MCP server work from natural prompts:
 
-- "Use @nauro-planner to plan adding rate limiting to our API." — the planner
+- "Use @nauro-planner to plan adding rate limiting to our API." The planner
   classifies doctrine risk and checks recorded decisions before proposing.
-- "Have @nauro-reviewer review this diff against our recorded decisions." — it
+- "Have @nauro-reviewer review this diff against our recorded decisions." It
   flags conflicts with established doctrine, not just code issues.
 - "Before we adopt DynamoDB, check our decision log for anything that conflicts."
-  — runs `check_decision` so the agent sees prior context before it acts.
+  This runs `check_decision` so the agent sees prior context before it acts.
 
 ## Versioning
 
 `plugin.json`'s `version` tracks the published `nauro` CLI version one-to-one.
-CI (`version-sync`) fails if they drift, so an installed plugin never lags a
-released CLI.
+CI (`version-sync`) runs on every change and daily, and fails while they
+drift, so a missed bump after a CLI release shows up as a red check.
 
 If a released version is not showing up as an update, refresh the marketplace
 clone first. Claude Code caches marketplace repos locally and does not always
@@ -106,7 +106,7 @@ Nauro is local-first: your project context lives as Markdown in `~/.nauro/`, and
 your source code never leaves your machine. This plugin's MCP server runs locally
 (`nauro serve --stdio`) and works fully offline with no account. The `nauro` CLI
 sends no telemetry. Optional hosted sync (separate and opt-in) stores
-agent-authored project context — decisions, state, questions, snapshots — plus
+agent-authored project context (decisions, state, questions, snapshots) plus
 your account email and an opaque account id; never your source code, file paths,
 repository names, or conversation content.
 

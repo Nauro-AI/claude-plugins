@@ -1,7 +1,7 @@
 {
   "name": "nauro",
-  "version": "1.21.0",
-  "description": "The decision system for building software with AI: human-approved project judgment for every connected agent. Wires the Nauro stdio MCP server into Claude Code and Cowork. Requires the nauro CLI (uv tool install nauro).",
+  "version": "1.22.1",
+  "description": "Decision system for software built with AI. Wires the Nauro stdio MCP server into Claude Code and Cowork. Requires the nauro CLI (uv tool install nauro).",
   "author": {
     "name": "Nauro-AI"
   },

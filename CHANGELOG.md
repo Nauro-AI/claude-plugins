@@ -1,12 +1,26 @@
 # Changelog
 
 All notable changes to the Nauro Claude Code plugin distribution are documented
-here. This tracks the **plugin packaging**, not the `nauro` CLI itself — see the
+here. This tracks the **plugin packaging**, not the `nauro` CLI itself. See the
 CLI's own release notes for runtime changes. The plugin's `version` in
 `plugin.json` is pinned in lockstep to the published `nauro` CLI on PyPI (CI
 gate: `version-sync`), so version numbers here mirror CLI releases.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [1.22.1]
+
+### Changed
+
+- Pinned `plugin.json` to `nauro` 1.22.1 in lockstep with the CLI, catching up
+  across the 1.21.1 through 1.22.1 releases. The five bundled agents
+  byte-match the 1.22.1 render, so no agent change was needed.
+- Updated the plugin and marketplace descriptions and the README to the
+  current tagline: Decision system for software built with AI.
+- Listed the opt-in `nauro-interview` skill in the README.
+- Corrected the README versioning note: `version-sync` flags drift with a red
+  check rather than preventing it.
+- Replaced em-dashes in the README and changelog with plain punctuation.
 
 ## [1.21.0]
 
@@ -119,7 +133,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Pinned `plugin.json` to `nauro` 1.1.0 in lockstep with the CLI release. The
   bundled `nauro-*` agents byte-match the 1.1.0 render (`nauro render-plugin .
-  --check` passes), so no agent change was needed — only the version pin.
+  --check` passes), so no agent change was needed, only the version pin.
 
 ## [0.13.1]
 
@@ -199,7 +213,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Pinned `plugin.json` to `nauro` 0.12.1 to clear the `version-sync` lockstep
   gate (the plugin had drifted a release behind the published CLI). The bundled
   `nauro-*` agents are byte-identical to the 0.12.1 render, so no agent change
-  was needed — only the version pin.
+  was needed, only the version pin.
 - CI (`version-sync`) now also runs `claude plugin validate . --strict`, gating
   the same check the community-directory review pipeline runs.
 
@@ -215,7 +229,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `.gitignore` to keep local dev artifacts out of the install cache (the
   marketplace entry uses `source: "./"`, which ships the whole repo root).
 - README "Privacy & data" section linking the privacy policy
-  (https://nauro.ai/privacy) and an "Example prompts" section — pre-submission
+  (https://nauro.ai/privacy) and an "Example prompts" section: pre-submission
   requirements for the community directory (Software Directory Policy 3.A / 3.E).
 
 ## [0.11.1]
